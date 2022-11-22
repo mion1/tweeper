@@ -9,9 +9,11 @@ class UserTweet:
     @property
     def tsend_tweet(self):
         user_text = input("tweet: ")
+        r_id = input('id of the tweet to reply to: ') or None
 
         try:
             response = self.client.create_tweet(text = user_text, 
+                                                in_reply_to_tweet_id = r_id,
                                                 user_auth = True)
 
         except tweepy.errors.TooManyRequests:
